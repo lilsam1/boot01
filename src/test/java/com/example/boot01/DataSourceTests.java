@@ -24,4 +24,5 @@ public class DataSourceTests {
         log.info(connection);
         Assertions.assertNotNull(connection);
     }
+
 }
