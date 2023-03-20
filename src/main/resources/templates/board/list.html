@@ -41,10 +41,10 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Bno</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Writer</th>
-                        <th scope="col">RegDate</th>
+                        <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">글쓴이</th>
+                        <th scope="col">작성날짜</th>
                     </tr>
                     </thead>
                     <tbody th:with="link = ${pageRequestDTO.getLink()}">
@@ -57,10 +57,9 @@
                     </tbody>
                 </table>
 
-                <div class="float-end">
-                    <ul class="pagination flex-wrap">
+                    <ul class="pagination justify-content-center">
                         <li class="page-item" th:if="${responseDTO.prev}">
-                            <a class="page-link" th:data-num="${resonseDTO.start - 1}">Previous</a>
+                            <a class="page-link" th:data-num="${responseDTO.start - 1}">이전</a>
                         </li>
                         <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
                             <li th:class="${responseDTO.page == i} ? 'page-item active' : 'page-item'">
@@ -68,10 +67,10 @@
                             </li>
                         </th:block>
                         <li class="page-item" th:if="${responseDTO.next}">
-                            <a class="page-link" th:data-num="${responseDTO.end + 1}">Next</a>
+                            <a class="page-link" th:data-num="${responseDTO.end + 1}">다음</a>
                         </li>
                     </ul>
-                </div>
+
             </div>
         </div>
     </div>
