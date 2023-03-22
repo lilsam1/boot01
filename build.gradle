@@ -60,7 +60,7 @@ tasks.named('test') {
 sourceSets {
     main {
         java {
-            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
+            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated/querydsl"]
         }
     }
 }
