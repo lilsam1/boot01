@@ -1,0 +1,11 @@
+package com.example.boot01.service;
+
+import com.example.boot01.dto.MemberJoinDTO;
+
+public interface MemberService {
+    static class MidExistException extends Exception {
+
+    }
+
+    void join(MemberJoinDTO memberJoinDTO) throws MidExistException;
+}

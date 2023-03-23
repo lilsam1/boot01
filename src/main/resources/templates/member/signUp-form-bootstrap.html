@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 </title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/signUp.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3 text-center">회원가입</h4>
+        <form class="validation-form" action="http://nomad1st.cafe24.com/mentor/section_14/action.php" name="member_insert" method="post" novalidate>
+            <div class="mb-3">
+              <label for="id">아이디</label>
+              <input type="text" class="form-control" name="memberID" placeholder="" value="" pattern="^[A-Za-z]{1}[A-Z|a-z|0-9]{3,11}$" required>
+              <div class="invalid-feedback">
+                아이디는 4자 이상 12자 이하 영문자와 숫자의 조합이어야하며 첫 글자는 영문자로 시작해야합니다.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password">비밀번호</label>
+              <input type="password" class="form-control" id="password" name="passwd" placeholder="" value="" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!%*#?&])[A-Za-z\d@!%*#?&]{8,}$" required>
+              <div class="invalid-feedback">
+                비밀번호는 8자 이상이어야 하며 최소 하나 이상의 숫자, 문자, 특수 문자를 포함해야 합니다
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password">비밀번호 확인</label>
+              <input type="password" class="form-control" id="confirm_password"  name="passwdCheck" placeholder="" value=""  required>
+              <div class="invalid-feedback">
+                비밀번호가 일치하지 않습니다. 비밀번호를 다시 한 번 확인해주세요.
+              </div>
+            </div>
+
+          <div class="mb-3">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" name="email" placeholder="exam@example.com" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" required>
+            <div class="invalid-feedback">
+              이메일을 입력해주세요.
+            </div>
+          </div>
+
+          <hr class="mb-4">
+          <div class="mb-4"></div>
+          <!-- <input type="button" class="btn btn-sign btn-round btn-lg btn-block" value="가입 완료" onclick="checkMember()"> -->
+          <button class="btn btn-sign btn-round btn-lg btn-block" type="submit">가입 완료</button>
+        </form>
+      </div>
+    </div>
+    <footer class="my-3 text-center text-small">
+      <p class="mb-1">&copy; 2022 jj</p>
+    </footer>
+  </div>
+  <script>
+      // 유효성 검사
+      const forms = document.getElementsByClassName('validation-form');
+
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+
+
+      // 비밀번호 재확인
+      var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+
+      function validatePassword(){
+        if(password.value != confirm_password.value) {
+          confirm_password.setCustomValidity("N");
+        } else {
+          confirm_password.setCustomValidity(''); // 오류가 없으면 메시지를 빈 문자열로 설정해야한다. 오류 메시지가 비어 있지 않은 한 양식은 유효성 검사를 통과하지 않고 제출되지 않는다.
+        }
+      }
+
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;
+
+  </script>
+</body>
+
+</html>
